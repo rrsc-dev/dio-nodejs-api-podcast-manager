@@ -1,0 +1,29 @@
+{
+  "name": "dio-nodejs-api-podcast-manager",
+  "version": "1.0.0",
+  "description": "A ideia é criar o projeto apenas com o que o node oferece, sem uso de framework",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx src/server.ts",
+    "start:watch": "tsx watch src/server.ts",
+    "dist": "tsup src",
+    "start:dist": "npm run dist && node/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrsc-dev/dio-nodejs-api-podcast-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rrsc-dev/dio-nodejs-api-podcast-manager/issues"
+  },
+  "homepage": "https://github.com/rrsc-dev/dio-nodejs-api-podcast-manager#readme",
+  "dependencies": {
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

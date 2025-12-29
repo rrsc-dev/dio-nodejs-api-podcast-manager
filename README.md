@@ -1,0 +1,1 @@
+A ideia é criar o projeto apenas com o que o node oferece, sem uso de framework

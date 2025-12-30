@@ -6,7 +6,7 @@ const pathData = path.join(__dirname, "../repositories/podcasts.json"); // dirna
 
 export const repoPodcast = async (podcastName?: string): Promise<PodcastModel[]> => {
     // Função com parâmetro opcional
-    const rawData = fs.readFileSync(pathData, "utf-8");
+    const rawData = fs.readFileSync(pathData, "utf-8"); // Lê o arquivo como string
     let jsonFile = JSON.parse(rawData);
 
     if (podcastName) {

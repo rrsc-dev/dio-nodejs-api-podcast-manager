@@ -2,12 +2,14 @@ import { IncomingMessage, ServerResponse } from 'http';
 
 import {serviceListEpisodes } from '../services/list-episodes-service';
 import { serviceFilterEpisodes } from '../services/filter-episodes-service';
+import { StatusCode } from '../utils/status-code';
+import { ContentType } from '../utils/content-types';
 
 export const getListEpisodes = async (req: IncomingMessage, res: ServerResponse) => {
 
     const content = await serviceListEpisodes();
 
-    res.writeHead(200, {
+    res.writeHead(StatusCode.OK, {
         'content-type': 'application/json'
     }); // Protocolo http formado por cabeçalho e corpo, onde o cabeçalho traz metadados sobre a requisição ou resposta, como tipo de conteúdo, status, etc.
 
@@ -21,8 +23,8 @@ export const getFilterEpisodes = async (req: IncomingMessage, res: ServerRespons
 
     const content = await serviceFilterEpisodes(req.url);
 
-    res.writeHead(200, {
-        'content-type': 'application/json'
+    res.writeHead(StatusCode.OK, {
+        'content-type': ContentType.JSON
     });
 
     res.end(JSON.stringify(content));

@@ -2,17 +2,16 @@ import { IncomingMessage, ServerResponse } from 'http';
 
 import {serviceListEpisodes } from '../services/list-episodes-service';
 import { serviceFilterEpisodes } from '../services/filter-episodes-service';
-import { StatusCode } from '../utils/status-code';
 import { ContentType } from '../utils/content-types';
 import { FilterPodcastModel } from '../models/filter-podcast-model';
+
+const DEFAULT_CONTENT = { 'content-type': ContentType.JSON };
 
 export const getListEpisodes = async (req: IncomingMessage, res: ServerResponse) => {
 
     const content: FilterPodcastModel = await serviceListEpisodes();
 
-    res.writeHead(content.statusCode, {
-        'content-type': 'application/json'
-    }); // Protocolo http formado por cabeçalho e corpo, onde o cabeçalho traz metadados sobre a requisição ou resposta, como tipo de conteúdo, status, etc.
+    res.writeHead(content.statusCode, DEFAULT_CONTENT); // Protocolo http formado por cabeçalho e corpo, onde o cabeçalho traz metadados sobre a requisição ou resposta, como tipo de conteúdo, status, etc.
     
     res.write(JSON.stringify(content.body));
     res.end(); // Usado como um ponto final
@@ -25,9 +24,7 @@ export const getFilterEpisodes = async (req: IncomingMessage, res: ServerRespons
 
     const content: FilterPodcastModel = await serviceFilterEpisodes(req.url);
 
-    res.writeHead(content.statusCode, {
-        'content-type': ContentType.JSON
-    });
+    res.writeHead(content.statusCode, DEFAULT_CONTENT);
 
     res.write(JSON.stringify(content.body));
     res.end();

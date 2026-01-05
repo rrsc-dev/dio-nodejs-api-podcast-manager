@@ -3,8 +3,6 @@ import { FilterPodcastModel } from "../models/filter-podcast-model";
 
 import { StatusCode } from "../utils/status-code";
 
-
-
 export const serviceListEpisodes = async (): Promise<FilterPodcastModel> => {
 
     // Definindo o formato de resposta
